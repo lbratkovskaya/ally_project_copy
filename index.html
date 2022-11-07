@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8"/>
+    <title>Larisa Bratkovskaya's Accessibility Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="./main.css" rel="stylesheet">
+    <script type="application/javascript" src="./buyButton.js"></script>
+    <script type="application/javascript" src="./buyForm.js"></script>
+    <script type="application/javascript" src="./combobox.js"></script>
+    <script type="application/javascript" src="./radioGroup.js"></script>
+    <script type="application/javascript" src="./tablist.js"></script>
+    <script type="application/javascript" src="./index.js"></script>
+</head>
+<body>
+<a href="#main-content" id="skip-link">К основному контенту</a>
+<header>
+    <nav>
+        <ul id="nav-menu" role="menubar">
+            <li>
+                <a href="#" class="nav-menu-item" role="menuitem">Товары для котов</a>
+            </li>
+            <li>
+                <a href="#" class="nav-menu-item" role="menuitem">Товары для собак</a>
+            </li>
+            <li>
+                <a href="#" class="nav-menu-item" role="menuitem">Товары для лошадей</a>
+            </li>
+            <li>
+                <a href="#" class="nav-menu-item" role="menuitem">Товары для черепах</a>
+            </li>
+            <li>
+                <a href="#" class="nav-menu-item" role="menuitem">Товары для рыб</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main id="main-content">
+    <div id="action-alert" role="alert" aria-live="polite"></div>
+    <h1>Товары для котов</h1>
+    <section id="catalog">
+
+        <label id="combo-label" class="combo-label">Сортировать по:</label>
+        <div class="combo js-select" id="sort-select">
+            <div aria-controls="listbox" aria-expanded="false" aria-haspopup="listbox" aria-labelledby="combo-label" id="combo1" class="combo-input" role="combobox" tabindex="0">
+            </div>
+            <div class="combo-menu" role="listbox" id="listbox" aria-labelledby="combo-label" tabindex="-1">
+                <div role="option" id="combo1-0" class="combo-option option-current" aria-selected="true">По возрастанию цены</div>
+                <div role="option" id="combo1-1" class="combo-option" aria-selected="false">По убыванию цены</div>
+                <div role="option" id="combo1-2" class="combo-option" aria-selected="false">По популярности</div>
+                <div role="option" id="combo1-3" class="combo-option" aria-selected="false">Нет сортировки</div>
+            </div>
+        </div>
+
+        <ul id="goods-list">
+            <li>
+                <article class="item-card">
+                    <img src="./assets/kitty_mat.png" alt=""/>
+                    <div>
+                        <span id="item-title-1" class="item-title item-card-title"></span>
+                        <div id="item-price-1" class="item-price">
+                            <span id="new-price-1"></span>
+                            <span id="old-price-1"></span>
+                        </div>
+                        <button id="item-buy-1" class="item-card-button">Купить</button>
+                    </div>
+                </article>
+            </li>
+            <li>
+                <article class="item-card">
+                    <img src="./assets/kitty_mat.png" alt=""/>
+                    <div>
+                        <span id="item-title-2" class="item-title item-card-title"></span>
+                        <div id="item-price-2" class="item-price">
+                            <span id="new-price-2"></span>
+                            <span id="old-price-2"></span>
+                        </div>
+                        <button id="item-buy-2" class="item-card-button">Купить</button>
+                    </div>
+                </article>
+            </li>
+            <li>
+                <article class="item-card">
+                    <img src="./assets/kitty_mat.png" alt=""/>
+                    <div>
+                        <span id="item-title-3" class="item-title item-card-title"></span>
+                        <div id="item-price-3" class="item-price">
+                            <span id="new-price-3"></span>
+                            <span id="old-price-3"></span>
+                        </div>
+                        <button id="item-buy-3" class="item-card-button">Купить</button>
+                    </div>
+                </article>
+            </li>
+            <li>
+                <article class="item-card">
+                    <img src="./assets/kitty_mat.png" alt=""/>
+                    <div>
+                        <span id="item-title-4" class="item-title item-card-title"></span>
+                        <div id="item-price-4" class="item-price">
+                            <span id="new-price-4"></span>
+                            <span id="old-price-4"></span>
+                        </div>
+                        <button id="item-buy-4" class="item-card-button">Купить</button>
+                    </div>
+                </article>
+            </li>
+            <li>
+                <article class="item-card">
+                    <img src="./assets/kitty_mat.png" alt=""/>
+                    <div>
+                        <span id="item-title-5" class="item-title item-card-title"></span>
+                        <div id="item-price-5" class="item-price">
+                            <span id="new-price-5"></span>
+                            <span id="old-price-5"></span>
+                        </div>
+                        <button id="item-buy-5" class="item-card-button">Купить</button>
+                    </div>
+                </article>
+            </li>
+        </ul>
+    </section>
+    <section id="video">
+        <h2>Видео о товарах для котов</h2>
+        <iframe width="1184"
+                height="663"
+                src="https://www.youtube.com/embed/dfZuF8-hpZ4"
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+
+        </iframe>
+    </section>
+    <section id="additional">
+        <h2 id="cats-additional">Подробнее о товарах для котов</h2>
+        <div class="tabs">
+            <div role="tablist" aria-labelledby="cats-additional" class="manual">
+                <button id="tab-1" type="button" role="tab" aria-selected="true" aria-controls="tabpanel-1">
+                    О котах
+                </button>
+                <button id="tab-2" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-2"
+                        tabindex="-1">
+                    О товарах
+                </button>
+            </div>
+
+            <div id="tabpanel-1" role="tabpanel" aria-labelledby="tab-1">
+                <p>Lorem mauris mi dapibus accumsan purus efficitur tristique vivamus per placerat iaculis, ridiculus
+                    dolor lacus curabitur magna finibus ullamcorper massa phasellus tellus etiam, eleifend taciti
+                    suscipit integer augue dui metus molestie nullam at. Ullamcorper suscipit arcu porta aenean non
+                    vestibulum, sagittis netus phasellus fermentum a urna fusce, velit ad nec semper interdum. Erat
+                    massa nisi congue aliquam a accumsan ante efficitur quisque tempus, condimentum faucibus tellus
+                    posuere purus justo sit mi ut sed scelerisque, ac proin nullam penatibus pretium neque suscipit
+                    vestibulum mattis.</p>
+                <p>Lorem mauris mi dapibus accumsan purus efficitur tristique vivamus per placerat iaculis, ridiculus
+                    dolor lacus curabitur magna finibus ullamcorper massa phasellus tellus etiam, eleifend taciti
+                    suscipit integer augue dui metus molestie nullam at. Ullamcorper suscipit arcu porta aenean non
+                    vestibulum, sagittis netus phasellus fermentum a urna fusce, velit ad nec semper interdum. Erat
+                    massa nisi congue aliquam a accumsan ante efficitur quisque tempus, condimentum faucibus tellus
+                    posuere purus justo sit mi ut sed scelerisque, ac proin nullam penatibus pretium neque suscipit
+                    vestibulum mattis.</p>
+                <p>Lorem mauris mi dapibus accumsan purus efficitur tristique vivamus per placerat iaculis, ridiculus
+                    dolor lacus curabitur magna finibus ullamcorper massa phasellus tellus etiam, eleifend taciti
+                    suscipit integer augue dui metus molestie nullam at. Ullamcorper suscipit arcu porta aenean non
+                    vestibulum, sagittis netus phasellus fermentum a urna fusce, velit ad nec semper interdum. Erat
+                    massa nisi congue aliquam a accumsan ante efficitur quisque tempus, condimentum faucibus tellus
+                    posuere purus justo sit mi ut sed scelerisque, ac proin nullam penatibus pretium neque suscipit
+                    vestibulum mattis.</p>
+            </div>
+            <div id="tabpanel-2" role="tabpanel" aria-labelledby="tab-2" class="is-hidden">
+                <p>Lorem mauris mi dapibus accumsan purus efficitur tristique vivamus per placerat iaculis, ridiculus
+                    dolor lacus curabitur magna finibus ullamcorper massa phasellus tellus etiam, eleifend taciti
+                    suscipit integer augue dui metus molestie nullam at. Ullamcorper suscipit arcu porta aenean non
+                    vestibulum, sagittis netus phasellus fermentum a urna fusce, velit ad nec semper interdum. Erat
+                    massa nisi congue aliquam a accumsan ante efficitur quisque tempus, condimentum faucibus tellus
+                    posuere purus justo sit mi ut sed scelerisque, ac proin nullam penatibus pretium neque suscipit
+                    vestibulum mattis.</p>
+                <p>Lorem mauris mi dapibus accumsan purus efficitur tristique vivamus per placerat iaculis, ridiculus
+                    dolor lacus curabitur magna finibus ullamcorper massa phasellus tellus etiam, eleifend taciti
+                    suscipit integer augue dui metus molestie nullam at. Ullamcorper suscipit arcu porta aenean non
+                    vestibulum, sagittis netus phasellus fermentum a urna fusc</p>
+            </div>
+        </div>
+    </section>
+</main>
+<footer id="footer">
+    <div>
+        <h3 id="soc-media-title">Соц. сети</h3>
+        <div role="group" id="soc-media">
+            <a href="#soc-media" aria-label="Написать на e-mail">
+                <img src="./assets/email.svg" alt=""/>
+            </a>
+            <a href="#soc-media" aria-label="Мы в телеграм">
+                <img src="./assets/telegram.svg" alt=""/>
+            </a>
+            <a href="#soc-media" aria-label="Мы на Facebook">
+                <img src="./assets/facebook.svg" alt=""/>
+            </a>
+        </div>
+    </div>
+    <div>
+        <form id="subscription" aria-labelledby="subscription-title" action="emptyAction">
+            <h3 id="subscription-title">Подписка на новости</h3>
+            <div>
+                <input type="email" id="subscription-email"/>
+                <label for="subscription-email" id="subscription-email-label">Е-mail</label>
+                <button type="submit" id="subscription-submit" formaction="#">Подписаться</button>
+
+            </div>
+            <div role="group" id="personal-data-agreement">
+                <input type="checkbox" id="personal-data-agree" aria-selected="false"/>
+                <label id="personal-data-agree-label" for="personal-data-agree">Согласен на обработку персональных
+                    данных</label>
+            </div>
+
+        </form>
+    </div>
+</footer>
+<div class="overlay hidden">
+    <form id="order-form" aria-labelledby="buy-item-title buy-form">
+        <h2 id="order-form-title" class="item-title focusable">Коврик для кота</h2>
+        <label id="order-form-sub" class="form-label">Оформление заказа</label>
+
+        <div class="form-fields">
+            <div>
+                <label for="buyer-name" class="form-label">Имя и фамилия</label>
+                <input type="text" id="buyer-name" placeholder="Введите имя и фамилию" class="focusable"/>
+            </div>
+            <div>
+                <label for="buyer-email" class="form-label">Е-mail</label>
+                <input type="email" id="buyer-email" placeholder="gmail@gmail.com" class="focusable"/>
+            </div>
+            <div>
+                <label for="buyer-address" class="form-label">Адрес доставки</label>
+                <textarea id="buyer-address" cols="50" rows="8" class="focusable"
+                          placeholder="Введите полный почтовый адрес с индексом"></textarea>
+            </div>
+            <div id="payment-type" role="radiogroup" aria-labelledby="payment-type-label" class="focusable">
+                <label id="payment-type-label" class="form-label">Способ оплаты</label>
+                <div>
+                    <div role="radio" aria-checked="true" tabindex="0" class="form-label">
+                        Картой
+                    </div>
+                    <div role="radio" aria-checked="false" tabindex="-1" class="form-label">
+                        Наличными
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" id="send-order-button" class="focusable">Купить</button>
+    </form>
+</div>
+</body>
+</html>
