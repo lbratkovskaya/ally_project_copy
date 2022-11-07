@@ -1,0 +1,603 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+    margin: 0;
+}
+
+/* Set core root defaults */
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+    max-width: 100%;
+    display: block;
+}
+
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    color: #000000;
+}
+
+section {
+    margin-bottom: 125px;
+}
+
+#skip-link {
+    position: absolute;
+    top: -200px;
+
+    display: flex;
+    height: 56px;
+    border-radius: 5px;
+    padding: 14px 55px;
+
+    background-color: black;
+    color: white;
+
+    font-size: 24px;
+    line-height: 29px;
+    text-decoration: none;
+
+}
+
+#skip-link:focus {
+    top: 0;
+}
+
+header {
+    width: 1440px;
+    margin: 0 auto;
+}
+
+#nav-menu {
+    margin: 0 auto;
+    padding: 39px 0;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    list-style: none;
+}
+
+#nav-menu li {
+    display: flex;
+}
+
+[role="menuitem"].nav-menu-item,
+[role="menuitem"].nav-menu-item:link,
+[role="menuitem"].nav-menu-item:hover,
+[role="menuitem"].nav-menu-item:active,
+[role="menuitem"].nav-menu-item:visited {
+    text-decoration: none;
+    color: #000000;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+[role="alert"] {
+    padding: 10px;
+    border: 2px solid hsl(206, 74%, 54%);
+    border-radius: 4px;
+    background: hsl(206, 74%, 90%);
+}
+
+[role="alert"]:empty {
+    display: none;
+}
+
+
+h1 {
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+    line-height: 61px;
+}
+
+#main-content {
+    width: 1440px;
+    margin: 0 auto;
+    padding: 54px 128px;
+}
+
+.combo *,
+.combo *::before,
+.combo *::after {
+    box-sizing: border-box;
+}
+
+.combo {
+    display: block;
+    margin-bottom: 1.5em;
+    max-width: 400px;
+    position: relative;
+}
+
+.combo::after {
+    border-bottom: 2px solid rgba(0, 0, 0, .75);
+    border-right: 2px solid rgba(0, 0, 0, .75);
+    content: "";
+    display: block;
+    height: 12px;
+    pointer-events: none;
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translate(0, -65%) rotate(45deg);
+    width: 12px;
+}
+
+.combo-input {
+    background-color: #f5f5f5;
+    border: 2px solid rgba(0, 0, 0, .75);
+    border-radius: 4px;
+    display: block;
+    font-size: 1em;
+    min-height: calc(1.4em + 26px);
+    padding: 12px 16px 14px;
+    text-align: left;
+    width: 100%;
+}
+
+.open .combo-input {
+    border-radius: 4px 4px 0 0;
+}
+
+.combo-input:focus {
+    border-color: #0067b8;
+    box-shadow: 0 0 4px 2px #0067b8;
+    outline: 4px solid transparent;
+}
+
+.combo-label {
+    display: block;
+    font-size: 20px;
+    font-weight: 100;
+    margin-bottom: 0.25em;
+}
+
+.combo-menu {
+    background-color: #f5f5f5;
+    border: 1px solid rgba(0, 0, 0, .75);
+    border-radius: 0 0 4px 4px;
+    display: none;
+    max-height: 300px;
+    overflow-y: scroll;
+    left: 0;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    z-index: 100;
+}
+
+.open .combo-menu {
+    display: block;
+}
+
+.combo-option {
+    padding: 10px 12px 12px;
+}
+
+.combo-option:hover {
+    background-color: rgba(0, 0, 0, .1);
+}
+
+.combo-option.option-current {
+    outline: 3px solid #0067b8;
+    outline-offset: -3px;
+}
+
+.combo-option[aria-selected="true"] {
+    padding-right: 30px;
+    position: relative;
+}
+
+.combo-option[aria-selected="true"]::after {
+    border-bottom: 2px solid #000;
+    border-right: 2px solid #000;
+    content: "";
+    height: 16px;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translate(0, -50%) rotate(45deg);
+    width: 8px;
+}
+
+#goods-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding-inline-start: 0;
+}
+
+.item-title {
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 39px;
+}
+
+.item-card {
+    width: 378px;
+    height: 472px;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 5px;
+}
+
+.item-card > div {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+}
+
+.item-card-title {
+    padding: 17px 0 12px;
+}
+
+.item-price {
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 39px;
+}
+
+.item-price.price-discounted > span:first-child {
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 39px;
+    color: #FF0000;
+}
+
+.item-price.price-discounted > span:last-child {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: #D3D3D3;
+    text-decoration: line-through;
+}
+
+.item-card-button {
+    width: 329px;
+    height: 56px;
+    border-radius: 5px;
+
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: #FFFFFF;
+    background: #000000;
+}
+
+#video h2 {
+    margin-bottom: 35px;
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+    line-height: 61px;
+}
+
+#cats-additional {
+    margin-bottom: 58px;
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+    line-height: 61px;
+}
+
+[role="tablist"] {
+    display: flex;
+    gap: 22px;
+}
+
+[role="tab"],
+[role="tab"]:focus,
+[role="tab"]:hover {
+    width: 280px;
+    height: 56px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    font-size: 24px;
+    line-height: 29px;
+}
+
+[role="tab"][aria-selected="true"] {
+    background: #000000;
+    color: #FFFFFF;
+}
+
+[role="tab"][aria-selected="false"] {
+    background: #FFFFFF;
+}
+
+[role="tab"] span.focus {
+    display: inline-block;
+    margin: 2px;
+    padding: 4px 6px;
+}
+
+[role="tab"]:focus,
+[role="tab"]:active,
+[role="radio"]:focus,
+[role="radio"]:active,
+.focusable:focus,
+.focusable:active,
+#soc-media > a:focus,
+#soc-media > a:active,
+#subscription-submit:focus,
+#subscription-submit:active,
+#subscription-email:focus,
+#subscription-email:active {
+    outline: 2px solid rgb(36, 116, 214);
+    outline-offset: 3px;
+    border-radius: 5px;
+}
+
+[role="tabpanel"] {
+    margin-top: 27px;
+    min-height: 10em;
+    min-width: 550px;
+    overflow: auto;
+}
+
+[role="tabpanel"].is-hidden {
+    display: none;
+}
+
+[role="tabpanel"] p {
+    margin: 0;
+}
+
+footer {
+    width: 1440px;
+    margin: 0 auto;
+    padding: 70px 128px;
+    display: flex;
+    justify-content: space-between;
+    background: #FCFCFC;
+}
+
+footer h3 {
+    font-size: 32px;
+    line-height: 38px;
+}
+
+footer > div {
+    width: 50%;
+}
+
+#soc-media-title {
+    margin-bottom: 29px;
+}
+
+#soc-media {
+    display: flex;
+    gap: 25px;
+}
+
+#subscription {
+    display: flex;
+    flex-direction: column;
+}
+
+#subscription-title {
+    margin-bottom: 43px;
+}
+
+#subscription-email {
+    width: 303px;
+    height: 38px;
+    font-size: 24px;
+    line-height: 28px;
+    border-radius: 2px;
+    border: none;
+    border-bottom: 1px solid #000000;;
+}
+
+#subscription > div {
+    position: relative;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: baseline;
+    gap: 36px;
+}
+
+#subscription > div#personal-data-agreement {
+    align-items: center;
+    gap: 8px;
+}
+
+#subscription-email-label {
+    position: absolute;
+    left: 3px;
+    bottom: 10px;
+    font-size: 24px;
+    line-height: 28px;
+}
+
+#subscription-email:focus + #subscription-email-label {
+    bottom: 34px;
+    color: #5f5f5f;
+    font-size: 14px;
+    line-height: normal;
+    transition: all .3s ease-in;
+}
+
+#subscription-submit {
+    width: 280px;
+    height: 56px;
+    background: #000000;
+    color: #FFFFFF;
+    border-radius: 5px;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+}
+
+
+#personal-data-agree {
+    width: 24px;
+    height: 24px;
+}
+
+#personal-data-agree-label {
+    font-size: 16px;
+    line-height: 19px
+}
+
+.hidden {
+    display: none;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #8b8a8ac2;
+}
+
+#order-form {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    width: 550px;
+    height: 806px;
+    margin: auto;
+    padding: 74px 88px;
+    background: #FFFFFF;
+}
+
+#order-form-sub {
+    margin-top: 6px;
+    margin-bottom: 39px;
+}
+
+#order-form .form-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+}
+
+.form-fields > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.form-fields [type="text"],
+.form-fields [type="email"] {
+    height: 50px;
+    padding: 14px 6px 14px 19px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    background: #FFFFFF;
+}
+
+.form-fields textarea {
+    height: 121px;
+    padding: 12px 21px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    background: #FFFFFF;
+}
+
+.form-fields input::placeholder,
+.form-fields textarea::placeholder {
+    font-size: 18px;
+    line-height: 22px;
+    color: #A9A9A9;
+}
+
+.form-label {
+    font-size: 18px;
+    line-height: 22px;
+}
+
+#payment-type > div {
+    display: flex;
+    flex-direction: row;
+    gap: 38px;
+    margin-top: 16px;
+}
+
+#payment-type [role="radio"] {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#payment-type [role="radio"]::before {
+    position: relative;
+    top: 1px;
+    content: url("./assets/radio.svg");
+}
+
+#payment-type [role="radio"][aria-checked="true"]::before {
+    position: relative;
+    top: 1px;
+    content: url("./assets/radio_checked.svg");
+}
+
+#send-order-button {
+    width: 100%;
+    height: 56px;
+    margin-top: 56px;
+    border-radius: 5px;
+
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: #FFFFFF;
+    background: #000000;
+}
