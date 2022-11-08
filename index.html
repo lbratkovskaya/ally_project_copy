@@ -7,6 +7,7 @@
     <link href="./main.css" rel="stylesheet">
     <script type="application/javascript" src="./buyButton.js"></script>
     <script type="application/javascript" src="./buyForm.js"></script>
+    <script type="application/javascript" src="./checkbox.js"></script>
     <script type="application/javascript" src="./combobox.js"></script>
     <script type="application/javascript" src="./radioGroup.js"></script>
     <script type="application/javascript" src="./tablist.js"></script>
@@ -39,7 +40,6 @@
     <div id="action-alert" role="alert" aria-live="polite"></div>
     <h1>Товары для котов</h1>
     <section id="catalog">
-
         <label id="combo-label" class="combo-label">Сортировать по:</label>
         <div class="combo js-select" id="sort-select">
             <div aria-controls="listbox" aria-expanded="false" aria-haspopup="listbox" aria-labelledby="combo-label" id="combo1" class="combo-input" role="combobox" tabindex="0">
@@ -62,7 +62,8 @@
                             <span id="new-price-1"></span>
                             <span id="old-price-1"></span>
                         </div>
-                        <button id="item-buy-1" class="item-card-button">Купить</button>
+                        <span class="hidden" id="item-buy-label-1">Купить</span>
+                        <button id="item-buy-1" class="item-card-button" aria-labelledby="item-title-1 new-price-1 item-buy-label-1">Купить</button>
                     </div>
                 </article>
             </li>
@@ -75,7 +76,8 @@
                             <span id="new-price-2"></span>
                             <span id="old-price-2"></span>
                         </div>
-                        <button id="item-buy-2" class="item-card-button">Купить</button>
+                        <span class="hidden" id="item-buy-label-2">Купить</span>
+                        <button id="item-buy-2" class="item-card-button" aria-labelledby="item-title-2 new-price-2 item-buy-label-2">Купить</button>
                     </div>
                 </article>
             </li>
@@ -88,7 +90,8 @@
                             <span id="new-price-3"></span>
                             <span id="old-price-3"></span>
                         </div>
-                        <button id="item-buy-3" class="item-card-button">Купить</button>
+                        <span class="hidden" id="item-buy-label-3">Купить</span>
+                        <button id="item-buy-3" class="item-card-button" aria-labelledby="item-title-3 new-price-3 item-buy-label-3">Купить</button>
                     </div>
                 </article>
             </li>
@@ -101,7 +104,8 @@
                             <span id="new-price-4"></span>
                             <span id="old-price-4"></span>
                         </div>
-                        <button id="item-buy-4" class="item-card-button">Купить</button>
+                        <span class="hidden" id="item-buy-label-4">Купить</span>
+                        <button id="item-buy-4" class="item-card-button" aria-labelledby="item-title-4 new-price-4 item-buy-label-4">Купить</button>
                     </div>
                 </article>
             </li>
@@ -114,14 +118,15 @@
                             <span id="new-price-5"></span>
                             <span id="old-price-5"></span>
                         </div>
-                        <button id="item-buy-5" class="item-card-button">Купить</button>
+                        <span class="hidden" id="item-buy-label-5">Купить</span>
+                        <button id="item-buy-5" class="item-card-button" aria-labelledby="item-title-5 new-price-5 item-buy-label-5">Купить</button>
                     </div>
                 </article>
             </li>
         </ul>
     </section>
-    <section id="video">
-        <h2>Видео о товарах для котов</h2>
+    <section id="video" aria-labelledby="video-title">
+        <h2 id="video-title">Видео о товарах для котов</h2>
         <iframe width="1184"
                 height="663"
                 src="https://www.youtube.com/embed/dfZuF8-hpZ4"
@@ -131,7 +136,7 @@
 
         </iframe>
     </section>
-    <section id="additional">
+    <section id="additional" aria-labelledby="cats-additional">
         <h2 id="cats-additional">Подробнее о товарах для котов</h2>
         <div class="tabs">
             <div role="tablist" aria-labelledby="cats-additional" class="manual">

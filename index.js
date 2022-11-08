@@ -63,9 +63,9 @@ const emptyAction = () => {
 
 const fillItemCard = (item, li, index) => {
   li.querySelector(`#item-title-${index + 1}`).textContent = item.itemTitle;
-  li.querySelector(`#old-price-${index + 1}`).textContent = `${item.price}$`;
+  li.querySelector(`#old-price-${index + 1}`).textContent =  item.discountPrice ? `$${item.price}` : null;
   li.querySelector('img').src = item.itemPhoto;
-  li.querySelector(`#new-price-${index + 1}`).textContent = item.discountPrice ? `${item.discountPrice}$` : null;
+  li.querySelector(`#new-price-${index + 1}`).textContent = item.discountPrice ? `$${item.discountPrice}` : `$${item.price}`;
   li.querySelector(`#item-price-${index + 1}`).classList.toggle('price-discounted', !!item.discountPrice);
   const buyButton = li.querySelector('.item-card-button');
   new BuyButton(buyButton, item);
@@ -86,8 +86,11 @@ const updateSort = (comboEl) => {
 document.addEventListener('DOMContentLoaded', () => {
 
 
-  const tabList = document.querySelector('[role=tablist]');
+  const tabList = document.querySelector('[role="tablist"]');
   new TabsManual(tabList);
+
+  const chckbxEl = document.querySelector('[role="checkbox"]');
+  new Checkbox(chckbxEl);
 
   const comboEl = document.querySelector('#sort-select');
   comboEl.addEventListener('combo-change', () => {
