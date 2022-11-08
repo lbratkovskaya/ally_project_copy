@@ -57,6 +57,7 @@ class Combobox {
     if (this.open) {
       this.selectOption(this.activeIndex);
       this.updateMenuState(false, false);
+      this.fireEvent();
     }
   };
 
@@ -86,6 +87,7 @@ class Combobox {
       case SelectActions.CloseSelect:
         event.preventDefault();
         this.selectOption(this.activeIndex);
+        this.fireEvent();
       // intentional fallthrough
       case SelectActions.Close:
         event.preventDefault();
@@ -99,7 +101,6 @@ class Combobox {
   };
 
   onComboType = (letter) => {
-    // open the listbox if it is closed
     this.updateMenuState(true);
 
     // find the index of the first matching option
@@ -152,10 +153,7 @@ class Combobox {
     this.onOptionChange(index);
     this.selectOption(index);
     this.updateMenuState(false);
-    const event = new CustomEvent('combo-change');
-
-// Dispatch/Trigger/Fire the event
-    this.comboNode.dispatchEvent(event);
+    this.fireEvent();
   };
 
   onOptionMouseDown = () => {
@@ -163,6 +161,11 @@ class Combobox {
     // but we don't want to perform the default keyboard blur action
     this.ignoreBlur = true;
   };
+
+  fireEvent = () => {
+    const event = new CustomEvent('combo-change');
+    this.comboNode.dispatchEvent(event);
+  }
 
   selectOption = (index) => {
     // update state
@@ -226,7 +229,7 @@ const SelectActions = {
 // returns an array of options that begin with the filter string, case-independent
 function filterOptions(options = [], filter, exclude = []) {
   return options.filter((option) => {
-    const matches = option.textContent.toLowerCase().indexOf(filter.toLowerCase()) === 0;
+    const matches = option.textContent.toLowerCase().indexOf(filter.toLowerCase()) >= 0;
     return matches && exclude.indexOf(option) < 0;
   });
 }
