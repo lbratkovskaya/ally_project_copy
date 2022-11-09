@@ -63,7 +63,7 @@ const emptyAction = () => {
 
 const fillItemCard = (item, li, index) => {
   li.querySelector(`#item-title-${index + 1}`).textContent = item.itemTitle;
-  li.querySelector(`#old-price-${index + 1}`).textContent =  item.discountPrice ? `$${item.price}` : null;
+  li.querySelector(`#old-price-${index + 1}`).textContent = item.discountPrice ? `$${item.price}` : null;
   li.querySelector('img').src = item.itemPhoto;
   li.querySelector(`#new-price-${index + 1}`).textContent = item.discountPrice ? `$${item.discountPrice}` : `$${item.price}`;
   li.querySelector(`#item-price-${index + 1}`).classList.toggle('price-discounted', !!item.discountPrice);
@@ -91,6 +91,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const chckbxEl = document.querySelector('[role="checkbox"]');
   new Checkbox(chckbxEl);
+
+  const subscrEmail = document.querySelector('#subscription-email');
+  new FieldValidation(subscrEmail, [
+    {
+      name: 'emailFormat',
+      message: 'Не смогли распознать формат электронной почты',
+    }]);
 
   const comboEl = document.querySelector('#sort-select');
   comboEl.addEventListener('combo-change', () => {

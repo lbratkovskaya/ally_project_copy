@@ -12,6 +12,7 @@ class BuyForm {
     formNode.querySelectorAll('.focusable').forEach((el) => {
       el.tabIndex = -1;
 
+      el.addEventListener('click', () => {this.focusElement(el)})
       this.focusableElements.push(el);
     })
     this.header.tabIndex = 0;
@@ -28,10 +29,34 @@ class BuyForm {
 
     const radioGroup = formNode.querySelector('[role="radiogroup"]');
     new RadioGroup(radioGroup);
+
+   this.nameField = new FieldValidation(this.form.querySelector('#buyer-name'), [{
+      name: 'notNull',
+      message: 'Представьтесь, пожалуйста'
+    }]);
+
+    this.emailField = new FieldValidation(this.form.querySelector('#buyer-email'), [
+      {
+        name: 'notNull',
+        message: 'Заполните адрес электронной почты',
+      },
+      {
+        name: 'emailFormat',
+        message: 'Не смогли распознать формат электронной почты',
+      }]);
+
+    this.addressField = new FieldValidation(this.form.querySelector('#buyer-address'), [{
+      name: 'notNull',
+      message: 'По какому адресу нам привезти Ваш заказ?',
+    }]);
   }
 
   closeForm = () => {
     this.overlay.classList.add('hidden');
+  }
+
+  hasFieldsErrors = () => {
+    return this.nameField.hasError() || this.emailField.hasError() || this.addressField.hasError()
   }
 
   focusPrev = () => {
@@ -52,7 +77,7 @@ class BuyForm {
     }
   }
 
-  focusElement =(element) => {
+  focusElement = (element) => {
     this.focusableElements.forEach((el) => {
       el.tabIndex = -1;
     })
@@ -62,6 +87,9 @@ class BuyForm {
   }
 
   submitForm = () => {
+    if (this.hasFieldsErrors()) {
+      return;
+    }
     this.closeForm();
     document.querySelector('#action-alert').textContent = `Вы заказали ${this.purchaseItem.itemTitle}`;
     setTimeout(() => {
