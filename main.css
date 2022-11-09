@@ -440,11 +440,16 @@ footer > div {
 }
 
 #subscription > div {
-    position: relative;
     margin-bottom: 12px;
     display: flex;
     align-items: baseline;
     gap: 36px;
+}
+
+#subscription > div > div {
+    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 #subscription > div#personal-data-agreement {
@@ -455,17 +460,9 @@ footer > div {
 #subscription-email-label {
     position: absolute;
     left: 3px;
-    bottom: 10px;
-    font-size: 24px;
-    line-height: 28px;
-}
-
-#subscription-email:focus + #subscription-email-label {
-    bottom: 34px;
-    color: #5f5f5f;
+    top: -20px;
     font-size: 14px;
     line-height: normal;
-    transition: all .3s ease-in;
 }
 
 #subscription-submit {
@@ -562,6 +559,16 @@ footer > div {
 .form-label {
     font-size: 18px;
     line-height: 22px;
+}
+
+.field-error {
+    font-size: 14px;
+    line-height: 18px;
+    color: #FF0000;
+}
+
+.field-error:empty {
+    display: none;
 }
 
 #payment-type > div {

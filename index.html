@@ -5,6 +5,7 @@
     <title>Larisa Bratkovskaya's Accessibility Project</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link href="./main.css" rel="stylesheet">
+    <script type="application/javascript" src="./validation.js"></script>
     <script type="application/javascript" src="./buyButton.js"></script>
     <script type="application/javascript" src="./buyForm.js"></script>
     <script type="application/javascript" src="./checkbox.js"></script>
@@ -42,10 +43,13 @@
     <section id="catalog">
         <label id="combo-label" class="combo-label">Сортировать по:</label>
         <div class="combo js-select" id="sort-select">
-            <div aria-controls="listbox" aria-expanded="false" aria-haspopup="listbox" aria-labelledby="combo-label" id="combo1" class="combo-input" role="combobox" tabindex="0">
+            <div aria-controls="listbox" aria-expanded="false" aria-haspopup="listbox" aria-labelledby="combo-label"
+                 id="combo1" class="combo-input" role="combobox" tabindex="0">
             </div>
             <div class="combo-menu" role="listbox" id="listbox" aria-labelledby="combo-label" tabindex="-1">
-                <div role="option" id="combo1-0" class="combo-option option-current" aria-selected="true">По возрастанию цены</div>
+                <div role="option" id="combo1-0" class="combo-option option-current" aria-selected="true">По возрастанию
+                    цены
+                </div>
                 <div role="option" id="combo1-1" class="combo-option" aria-selected="false">По убыванию цены</div>
                 <div role="option" id="combo1-2" class="combo-option" aria-selected="false">По популярности</div>
                 <div role="option" id="combo1-3" class="combo-option" aria-selected="false">Нет сортировки</div>
@@ -63,7 +67,9 @@
                             <span id="old-price-1"></span>
                         </div>
                         <span class="hidden" id="item-buy-label-1">Купить</span>
-                        <button id="item-buy-1" class="item-card-button" aria-labelledby="item-title-1 new-price-1 item-buy-label-1">Купить</button>
+                        <button id="item-buy-1" class="item-card-button"
+                                aria-labelledby="item-title-1 new-price-1 item-buy-label-1">Купить
+                        </button>
                     </div>
                 </article>
             </li>
@@ -77,7 +83,9 @@
                             <span id="old-price-2"></span>
                         </div>
                         <span class="hidden" id="item-buy-label-2">Купить</span>
-                        <button id="item-buy-2" class="item-card-button" aria-labelledby="item-title-2 new-price-2 item-buy-label-2">Купить</button>
+                        <button id="item-buy-2" class="item-card-button"
+                                aria-labelledby="item-title-2 new-price-2 item-buy-label-2">Купить
+                        </button>
                     </div>
                 </article>
             </li>
@@ -91,7 +99,9 @@
                             <span id="old-price-3"></span>
                         </div>
                         <span class="hidden" id="item-buy-label-3">Купить</span>
-                        <button id="item-buy-3" class="item-card-button" aria-labelledby="item-title-3 new-price-3 item-buy-label-3">Купить</button>
+                        <button id="item-buy-3" class="item-card-button"
+                                aria-labelledby="item-title-3 new-price-3 item-buy-label-3">Купить
+                        </button>
                     </div>
                 </article>
             </li>
@@ -105,7 +115,9 @@
                             <span id="old-price-4"></span>
                         </div>
                         <span class="hidden" id="item-buy-label-4">Купить</span>
-                        <button id="item-buy-4" class="item-card-button" aria-labelledby="item-title-4 new-price-4 item-buy-label-4">Купить</button>
+                        <button id="item-buy-4" class="item-card-button"
+                                aria-labelledby="item-title-4 new-price-4 item-buy-label-4">Купить
+                        </button>
                     </div>
                 </article>
             </li>
@@ -119,7 +131,9 @@
                             <span id="old-price-5"></span>
                         </div>
                         <span class="hidden" id="item-buy-label-5">Купить</span>
-                        <button id="item-buy-5" class="item-card-button" aria-labelledby="item-title-5 new-price-5 item-buy-label-5">Купить</button>
+                        <button id="item-buy-5" class="item-card-button"
+                                aria-labelledby="item-title-5 new-price-5 item-buy-label-5">Купить
+                        </button>
                     </div>
                 </article>
             </li>
@@ -127,13 +141,12 @@
     </section>
     <section id="video" aria-labelledby="video-title">
         <h2 id="video-title">Видео о товарах для котов</h2>
-        <iframe width="1184"
-                height="663"
+        <iframe width="1184" height="663"
                 src="https://www.youtube.com/embed/dfZuF8-hpZ4"
-                title="YouTube video player"
+                frameborder="0"
+                title="Товары для котиков"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen>
-
         </iframe>
     </section>
     <section id="additional" aria-labelledby="cats-additional">
@@ -207,8 +220,11 @@
         <form id="subscription" aria-labelledby="subscription-title" action="emptyAction">
             <h3 id="subscription-title">Подписка на новости</h3>
             <div>
-                <input type="email" id="subscription-email"/>
-                <label for="subscription-email" id="subscription-email-label">Е-mail</label>
+                <div>
+                    <label for="subscription-email" id="subscription-email-label">Е-mail</label>
+                    <input type="email" id="subscription-email" aria-describedby="subscription-email-error"/>
+                    <span id="subscription-email-error" class="field-error"></span>
+                </div>
                 <button type="submit" id="subscription-submit" formaction="#">Подписаться</button>
 
             </div>
@@ -229,24 +245,29 @@
         <div class="form-fields">
             <div>
                 <label for="buyer-name" class="form-label">Имя и фамилия</label>
-                <input type="text" id="buyer-name" placeholder="Введите имя и фамилию" class="focusable"/>
+                <input type="text" id="buyer-name" placeholder="Введите имя и фамилию" class="focusable"
+                       aria-describedby="buyer-name-error"/>
+                <span id="buyer-name-error" class="field-error"></span>
             </div>
             <div>
                 <label for="buyer-email" class="form-label">Е-mail</label>
-                <input type="email" id="buyer-email" placeholder="gmail@gmail.com" class="focusable"/>
+                <input type="email" id="buyer-email" placeholder="gmail@gmail.com" class="focusable"
+                       aria-describedby="buyer-email-error"/>
+                <span id="buyer-email-error" class="field-error"></span>
             </div>
             <div>
                 <label for="buyer-address" class="form-label">Адрес доставки</label>
-                <textarea id="buyer-address" cols="50" rows="8" class="focusable"
+                <textarea id="buyer-address" cols="50" rows="8" class="focusable" aria-describedby="buyer-address-error"
                           placeholder="Введите полный почтовый адрес с индексом"></textarea>
+                <span id="buyer-address-error" class="field-error"></span>
             </div>
-            <div id="payment-type" role="radiogroup" aria-labelledby="payment-type-label" class="focusable">
+            <div id="payment-type" role="radiogroup" aria-labelledby="payment-type-label">
                 <label id="payment-type-label" class="form-label">Способ оплаты</label>
                 <div>
-                    <div role="radio" aria-checked="true" tabindex="0" class="form-label">
+                    <div role="radio" aria-checked="true" tabindex="0" class="form-label focusable">
                         Картой
                     </div>
-                    <div role="radio" aria-checked="false" tabindex="-1" class="form-label">
+                    <div role="radio" aria-checked="false" tabindex="-1" class="form-label focusable">
                         Наличными
                     </div>
                 </div>

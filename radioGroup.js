@@ -8,6 +8,7 @@ class RadioGroup {
     this.lastRadioButton = null;
 
     this.groupNode.addEventListener('keydown', this.handleKeydown.bind(this));
+    this.groupNode.addEventListener('mousedown', (event) => {event.preventDefault()});
 
     const rbs = this.groupNode.querySelectorAll('[role=radio]');
 
