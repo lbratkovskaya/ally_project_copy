@@ -144,6 +144,15 @@ h1 {
     padding: 54px 128px;
 }
 
+#catalog {
+    display: flex;
+    flex-direction: column;
+}
+
+#catalog > div:first-child {
+    align-self: end;
+}
+
 .combo *,
 .combo *::before,
 .combo *::after {
@@ -153,7 +162,7 @@ h1 {
 .combo {
     display: block;
     margin-bottom: 1.5em;
-    max-width: 400px;
+    width: 280px;
     position: relative;
 }
 
@@ -443,16 +452,20 @@ footer > div {
     margin-bottom: 12px;
     display: flex;
     align-items: baseline;
-    gap: 36px;
 }
 
 #subscription > div > div {
     position: relative;
     display: flex;
     flex-direction: column;
+    width: 378px;
+    flex: 1 0 auto;
+    gap:16px;
 }
 
-#subscription > div#personal-data-agreement {
+#subscription div#personal-data-agreement {
+    display: flex;
+    flex-direction: row;
     align-items: center;
     gap: 8px;
 }
@@ -474,12 +487,13 @@ footer > div {
     font-weight: 400;
     font-size: 24px;
     line-height: 29px;
+    margin-left: -38px;
 }
-
 
 #personal-data-agree {
     width: 24px;
     height: 24px;
+    margin: 0;
 }
 
 #personal-data-agree-label {
@@ -509,7 +523,6 @@ footer > div {
     display: flex;
     flex-direction: column;
     width: 550px;
-    height: 806px;
     margin: auto;
     padding: 74px 88px;
     background: #FFFFFF;
@@ -518,6 +531,13 @@ footer > div {
 #order-form-sub {
     margin-top: 6px;
     margin-bottom: 39px;
+}
+
+#form-close {
+    position: absolute;
+    display: flex;
+    align-self: end;
+    margin-top: -24px;
 }
 
 #order-form .form-fields {

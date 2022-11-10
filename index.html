@@ -41,25 +41,27 @@
     <div id="action-alert" role="alert" aria-live="polite"></div>
     <h1>Товары для котов</h1>
     <section id="catalog">
-        <label id="combo-label" class="combo-label">Сортировать по:</label>
-        <div class="combo js-select" id="sort-select">
-            <div aria-controls="listbox" aria-expanded="false" aria-haspopup="listbox" aria-labelledby="combo-label"
-                 id="combo1" class="combo-input" role="combobox" tabindex="0">
-            </div>
-            <div class="combo-menu" role="listbox" id="listbox" aria-labelledby="combo-label" tabindex="-1">
-                <div role="option" id="combo1-0" class="combo-option option-current" aria-selected="true">По возрастанию
-                    цены
+        <div>
+            <label id="combo-label" class="combo-label">Сортировать по:</label>
+            <div class="combo js-select" id="sort-select">
+                <div aria-controls="listbox" aria-expanded="false" aria-haspopup="listbox" aria-labelledby="combo-label"
+                     id="combo1" class="combo-input" role="combobox" tabindex="0">
                 </div>
-                <div role="option" id="combo1-1" class="combo-option" aria-selected="false">По убыванию цены</div>
-                <div role="option" id="combo1-2" class="combo-option" aria-selected="false">По популярности</div>
-                <div role="option" id="combo1-3" class="combo-option" aria-selected="false">Нет сортировки</div>
+                <div class="combo-menu" role="listbox" id="listbox" aria-labelledby="combo-label" tabindex="-1">
+                    <div role="option" id="combo1-0" class="combo-option option-current" aria-selected="true">По
+                        возрастанию
+                        цены
+                    </div>
+                    <div role="option" id="combo1-1" class="combo-option" aria-selected="false">По убыванию цены</div>
+                    <div role="option" id="combo1-2" class="combo-option" aria-selected="false">По популярности</div>
+                    <div role="option" id="combo1-3" class="combo-option" aria-selected="false">Нет сортировки</div>
+                </div>
             </div>
         </div>
-
         <ul id="goods-list">
             <li>
                 <article class="item-card">
-                    <img src="./assets/kitty_mat.png" alt=""/>
+                    <img src="./assets/kitty_mat.png" alt="Изображение товара"/>
                     <div>
                         <span id="item-title-1" class="item-title item-card-title"></span>
                         <div id="item-price-1" class="item-price">
@@ -75,7 +77,7 @@
             </li>
             <li>
                 <article class="item-card">
-                    <img src="./assets/kitty_mat.png" alt=""/>
+                    <img src="./assets/kitty_mat.png" alt="Изображение товара"/>
                     <div>
                         <span id="item-title-2" class="item-title item-card-title"></span>
                         <div id="item-price-2" class="item-price">
@@ -91,7 +93,7 @@
             </li>
             <li>
                 <article class="item-card">
-                    <img src="./assets/kitty_mat.png" alt=""/>
+                    <img src="./assets/kitty_mat.png" alt="Изображение товара"/>
                     <div>
                         <span id="item-title-3" class="item-title item-card-title"></span>
                         <div id="item-price-3" class="item-price">
@@ -107,7 +109,7 @@
             </li>
             <li>
                 <article class="item-card">
-                    <img src="./assets/kitty_mat.png" alt=""/>
+                    <img src="./assets/kitty_mat.png" alt="Изображение товара"/>
                     <div>
                         <span id="item-title-4" class="item-title item-card-title"></span>
                         <div id="item-price-4" class="item-price">
@@ -123,7 +125,7 @@
             </li>
             <li>
                 <article class="item-card">
-                    <img src="./assets/kitty_mat.png" alt=""/>
+                    <img src="./assets/kitty_mat.png" alt="Изображение товара"/>
                     <div>
                         <span id="item-title-5" class="item-title item-card-title"></span>
                         <div id="item-price-5" class="item-price">
@@ -224,21 +226,30 @@
                     <label for="subscription-email" id="subscription-email-label">Е-mail</label>
                     <input type="email" id="subscription-email" aria-describedby="subscription-email-error"/>
                     <span id="subscription-email-error" class="field-error"></span>
+                    <div role="group" id="personal-data-agreement">
+                        <input type="checkbox" role="checkbox" id="personal-data-agree" aria-checked="false"/>
+                        <label id="personal-data-agree-label" for="personal-data-agree">Согласен на обработку
+                            персональных
+                            данных</label>
+                    </div>
                 </div>
                 <button type="submit" id="subscription-submit" formaction="#">Подписаться</button>
 
             </div>
-            <div role="group" id="personal-data-agreement">
-                <input type="checkbox" role="checkbox" id="personal-data-agree" aria-checked="false"/>
-                <label id="personal-data-agree-label" for="personal-data-agree">Согласен на обработку персональных
-                    данных</label>
-            </div>
+            <!--            <div role="group" id="personal-data-agreement">-->
+            <!--                <input type="checkbox" role="checkbox" id="personal-data-agree" aria-checked="false"/>-->
+            <!--                <label id="personal-data-agree-label" for="personal-data-agree">Согласен на обработку персональных-->
+            <!--                    данных</label>-->
+            <!--            </div>-->
 
         </form>
     </div>
 </footer>
 <div class="overlay hidden">
     <form id="order-form" aria-labelledby="buy-item-title buy-form">
+        <button type="button" id="form-close" class="focusable">
+            <img src="./assets/icon_close.svg" alt=""/>
+        </button>
         <h2 id="order-form-title" class="item-title focusable">Коврик для кота</h2>
         <label id="order-form-sub" class="form-label">Оформление заказа</label>
 
@@ -246,19 +257,20 @@
             <div>
                 <label for="buyer-name" class="form-label">Имя и фамилия</label>
                 <input type="text" id="buyer-name" placeholder="Введите имя и фамилию" class="focusable"
-                       aria-describedby="buyer-name-error"/>
+                       aria-describedby="buyer-name-error" required aria-required="true"/>
                 <span id="buyer-name-error" class="field-error"></span>
             </div>
             <div>
                 <label for="buyer-email" class="form-label">Е-mail</label>
                 <input type="email" id="buyer-email" placeholder="gmail@gmail.com" class="focusable"
-                       aria-describedby="buyer-email-error"/>
+                       aria-describedby="buyer-email-error" required aria-required="true"/>
                 <span id="buyer-email-error" class="field-error"></span>
             </div>
             <div>
                 <label for="buyer-address" class="form-label">Адрес доставки</label>
                 <textarea id="buyer-address" cols="50" rows="8" class="focusable" aria-describedby="buyer-address-error"
-                          placeholder="Введите полный почтовый адрес с индексом"></textarea>
+                          placeholder="Введите полный почтовый адрес с индексом" required
+                          aria-required="true"></textarea>
                 <span id="buyer-address-error" class="field-error"></span>
             </div>
             <div id="payment-type" role="radiogroup" aria-labelledby="payment-type-label">
