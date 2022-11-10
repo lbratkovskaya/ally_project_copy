@@ -1,23 +1,27 @@
 class BuyForm {
-  constructor(formNode, purchaseItem) {
+  constructor(formNode, parentButton, purchaseItem) {
     this.form = formNode;
     this.overlay = formNode.closest('.overlay');
     this.header = formNode.querySelector('h2');
     this.header.textContent = purchaseItem?.itemTitle;
     this.submit = formNode.querySelector('[type="submit"]');
+    this.close = formNode.querySelector('#form-close');
 
+    this.parentButton = parentButton;
     this.purchaseItem = purchaseItem;
 
     this.focusableElements = [];
     formNode.querySelectorAll('.focusable').forEach((el) => {
       el.tabIndex = -1;
 
-      el.addEventListener('click', () => {this.focusElement(el)})
+      el.addEventListener('click', () => {
+        this.focusElement(el)
+      })
       this.focusableElements.push(el);
     })
-    this.header.tabIndex = 0;
-    this.header.focus();
-    this.focusedElement = this.header;
+    this.focusableElements[0].tabIndex = 0;
+    this.focusableElements[0].focus();
+    this.focusedElement = this.focusableElements[0];
 
     this.form.addEventListener('click', this.handleFormClick.bind(this));
     this.form.addEventListener('keydown', this.handleFormKeydown.bind(this));
@@ -25,12 +29,15 @@ class BuyForm {
     this.submit.addEventListener('click', this.handleClick.bind(this));
     this.submit.addEventListener('keydown', this.handleKeydown.bind(this));
 
+    this.close.addEventListener('click', this.handleCloseClick.bind(this));
+    this.close.addEventListener('keydown', this.handleCloseKeydown.bind(this));
+
     this.overlay.addEventListener('click', this.handleOverlayClick.bind(this));
 
     const radioGroup = formNode.querySelector('[role="radiogroup"]');
     new RadioGroup(radioGroup);
 
-   this.nameField = new FieldValidation(this.form.querySelector('#buyer-name'), [{
+    this.nameField = new FieldValidation(this.form.querySelector('#buyer-name'), [{
       name: 'notNull',
       message: 'Представьтесь, пожалуйста'
     }]);
@@ -52,7 +59,9 @@ class BuyForm {
   }
 
   closeForm = () => {
+    this.form.querySelectorAll('.field-error').forEach((el) => el.textContent = null);
     this.overlay.classList.add('hidden');
+    this.parentButton.focus();
   }
 
   hasFieldsErrors = () => {
@@ -60,7 +69,7 @@ class BuyForm {
   }
 
   focusPrev = () => {
-    if (this.focusedElement === this.header) {
+    if (this.focusedElement === this.close) {
       this.focusElement(this.submit);
     } else {
       const currentIndex = this.focusableElements.indexOf(this.focusedElement);
@@ -70,7 +79,7 @@ class BuyForm {
 
   focusNext = () => {
     if (this.focusedElement === this.submit) {
-      this.focusElement(this.header);
+      this.focusElement(this.close);
     } else {
       const currentIndex = this.focusableElements.indexOf(this.focusedElement);
       this.focusElement(this.focusableElements[currentIndex + 1]);
@@ -103,6 +112,26 @@ class BuyForm {
     event.preventDefault();
     this.submitForm();
   }
+  handleCloseClick(event) {
+    event.stopPropagation();
+    event.preventDefault();
+    this.closeForm();
+  }
+
+  handleCloseKeydown(event) {
+    switch (event.key) {
+      case ' ':
+      case 'Enter':
+      case 'Escape':
+        event.stopPropagation();
+        event.preventDefault();
+        this.closeForm();
+        break;
+
+      default:
+        break;
+    }
+  }
 
   handleFormClick(event) {
     event.stopPropagation();
@@ -111,7 +140,7 @@ class BuyForm {
 
   handleFormKeydown(event) {
     switch (event.key) {
-      case 'Esc':
+      case 'Escape':
         event.stopPropagation();
         event.preventDefault();
         this.closeForm();
@@ -135,7 +164,7 @@ class BuyForm {
         event.preventDefault();
         this.submitForm();
         break;
-      case 'Esc':
+      case 'Escape':
         event.stopPropagation();
         event.preventDefault();
         this.closeForm();
