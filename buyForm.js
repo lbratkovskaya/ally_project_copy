@@ -56,10 +56,18 @@ class BuyForm {
       name: 'notNull',
       message: 'По какому адресу нам привезти Ваш заказ?',
     }]);
+
+    this.fields = [this.nameField, this.emailField, this.addressField];
   }
 
   closeForm = () => {
+    /* reset errors & current focused item */
     this.form.querySelectorAll('.field-error').forEach((el) => el.textContent = null);
+    this.fields.forEach((field) => {
+      field.getFieldNode().value = null;
+    });
+    this.focusedElement = this.focusableElements[0];
+    /* hide form */
     this.overlay.classList.add('hidden');
     this.parentButton.focus();
   }
@@ -96,7 +104,11 @@ class BuyForm {
   }
 
   submitForm = () => {
+    this.fields.forEach((field) => field.validateField());
+
     if (this.hasFieldsErrors()) {
+      const field = this.fields.find((field) => field.hasError())?.getFieldNode();
+      this.focusElement(field);
       return;
     }
     this.closeForm();
@@ -112,6 +124,7 @@ class BuyForm {
     event.preventDefault();
     this.submitForm();
   }
+
   handleCloseClick(event) {
     event.stopPropagation();
     event.preventDefault();
