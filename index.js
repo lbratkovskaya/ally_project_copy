@@ -76,12 +76,18 @@ const subscriptionSubmit = (event) => {
   event.preventDefault();
   const emailField = document.querySelector('#subscription-email');
   const processAgree = document.querySelector('#personal-data-agree');
+  let withError = false;
 
   if (emailField.value?.length === 0) {
     document.querySelector('#subscription-email-error').textContent = 'Нужно ввести адрес электронной почты';
+    withError = true;
   }
   if (!processAgree.checked) {
     document.querySelector('#subscription-email-error').textContent = 'Вы не согласились на обработку персональных данных';
+    withError = true;
+  }
+  if (withError) {
+    return;
   }
   document.querySelector('#action-alert').textContent = `Вы подписались на новости`;
   setTimeout(() => {
