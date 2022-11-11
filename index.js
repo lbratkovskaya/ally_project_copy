@@ -66,9 +66,27 @@ const fillItemCard = (item, li, index) => {
   li.querySelector(`#old-price-${index + 1}`).textContent = item.discountPrice ? `$${item.price}` : null;
   li.querySelector('img').src = item.itemPhoto;
   li.querySelector(`#new-price-${index + 1}`).textContent = item.discountPrice ? `$${item.discountPrice}` : `$${item.price}`;
+  li.querySelector(`#purchase-${index + 1}`).textContent = item.purchaseNumber;
   li.querySelector(`#item-price-${index + 1}`).classList.toggle('price-discounted', !!item.discountPrice);
   const buyButton = li.querySelector('.item-card-button');
   new BuyButton(buyButton, item);
+}
+
+const subscriptionSubmit = (event) => {
+  event.preventDefault();
+  const emailField = document.querySelector('#subscription-email');
+  const processAgree = document.querySelector('#personal-data-agree');
+
+  if (emailField.value?.length === 0) {
+    document.querySelector('#subscription-email-error').textContent = 'Нужно ввести адрес электронной почты';
+  }
+  if (!processAgree.checked) {
+    document.querySelector('#subscription-email-error').textContent = 'Вы не согласились на обработку персональных данных';
+  }
+  document.querySelector('#action-alert').textContent = `Вы подписались на новости`;
+  setTimeout(() => {
+    document.querySelector('#action-alert').textContent = null;
+  }, 3000);
 }
 
 const updateSort = (comboEl) => {
@@ -84,12 +102,13 @@ const updateSort = (comboEl) => {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-
-
   const tabList = document.querySelector('[role="tablist"]');
   new TabsManual(tabList);
 
   const chckbxEl = document.querySelector('[role="checkbox"]');
+  chckbxEl.addEventListener('change', () => {
+    document.querySelector('#subscription-email-error').textContent = null;
+  })
   new Checkbox(chckbxEl);
 
   const subscrEmail = document.querySelector('#subscription-email');
@@ -105,13 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   new Combobox(comboEl);
 
-  document.querySelector('#subscription').addEventListener("submit", (event) => {
-    event.preventDefault();
-    document.querySelector('#action-alert').textContent = `Вы подписались на новости`;
-    setTimeout(() => {
-      document.querySelector('#action-alert').textContent = null;
-    }, 3000);
-  });
+  document.querySelector('#subscription').addEventListener("submit", subscriptionSubmit);
 
   updateSort(comboEl);
 });

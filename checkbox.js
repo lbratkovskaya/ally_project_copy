@@ -7,7 +7,7 @@ class Checkbox {
       this.checkboxNode.setAttribute('aria-checked', 'false');
     }
 
-    this.checkboxNode.addEventListener('keydown', this.onKeydown.bind(this));
+    this.checkboxNode.addEventListener('keyup', this.onKeydown.bind(this));
     this.checkboxNode.addEventListener('click', this.onClick.bind(this));
   }
 
@@ -25,7 +25,6 @@ class Checkbox {
     switch (event.key) {
       case ' ':
         event.stopPropagation();
-        event.preventDefault();
         this.toggleCheckbox();
         break;
 

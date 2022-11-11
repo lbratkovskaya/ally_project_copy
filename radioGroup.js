@@ -8,7 +8,10 @@ class RadioGroup {
     this.lastRadioButton = null;
 
     this.groupNode.addEventListener('keydown', this.handleKeydown.bind(this));
-    this.groupNode.addEventListener('mousedown', (event) => {event.preventDefault()});
+    this.groupNode.addEventListener('keyup', this.handleKeyup.bind(this));
+    this.groupNode.addEventListener('mousedown', (event) => {
+      event.preventDefault()
+    });
 
     const rbs = this.groupNode.querySelectorAll('[role=radio]');
 
@@ -18,7 +21,8 @@ class RadioGroup {
       rb.tabIndex = -1;
       rb.setAttribute('aria-checked', 'false');
 
-      rb.addEventListener('keydown', this.handleKeydown.bind(this));
+      // this.groupNode.addEventListener('keydown', this.handleKeydown.bind(this));
+      rb.addEventListener('keyup', this.handleKeyup.bind(this));
       rb.addEventListener('click', this.handleClick.bind(this));
 
       this.radioButtons.push(rb);
@@ -44,7 +48,15 @@ class RadioGroup {
     target.focus();
   };
 
-  setCheckedToPreviousItem(target) {
+  setFocused = (target) => {
+    this.radioButtons.forEach((rb) => {
+      rb.tabIndex = -1;
+    });
+    target.tabIndex = 0;
+    target.focus();
+  };
+
+  setCheckedToPreviousItem = (target) => {
     if (target === this.firstRadioButton) {
       this.setChecked(this.lastRadioButton)
     } else {
@@ -53,7 +65,7 @@ class RadioGroup {
     }
   }
 
-  setCheckedToNextItem(target) {
+  setCheckedToNextItem = (target) => {
     if (target === this.lastRadioButton) {
       this.setChecked(this.firstRadioButton)
     } else {
@@ -62,8 +74,35 @@ class RadioGroup {
     }
   }
 
+  setFocusToPreviousItem = (target) => {
+    if (target === this.firstRadioButton) {
+      this.setFocused(this.lastRadioButton)
+    } else {
+      const currentIndex = this.radioButtons.indexOf(target);
+      this.setFocused(this.radioButtons[currentIndex - 1]);
+    }
+  }
+
+  setFocusToNextItem = (target) => {
+    if (target === this.lastRadioButton) {
+      this.setFocused(this.firstRadioButton)
+    } else {
+      const currentIndex = this.radioButtons.indexOf(target);
+      this.setFocused(this.radioButtons[currentIndex + 1]);
+    }
+  }
+
   /* event handlers */
+
+  handleClick(event) {
+    this.setChecked(event.currentTarget);
+  }
+
   handleKeydown(event) {
+    event.preventDefault();
+  }
+
+  handleKeyup(event) {
     const tgt = event.currentTarget;
 
     switch (event.key) {
@@ -80,7 +119,7 @@ class RadioGroup {
       case 'ArrowLeft':
         event.stopPropagation();
         event.preventDefault();
-        this.setCheckedToPreviousItem(tgt);
+        this.setFocusToPreviousItem(tgt);
         break;
 
       case 'Down':
@@ -89,7 +128,7 @@ class RadioGroup {
       case 'ArrowRight':
         event.stopPropagation();
         event.preventDefault();
-        this.setCheckedToNextItem(tgt);
+        this.setFocusToNextItem(tgt);
         break;
 
       default:
@@ -97,7 +136,4 @@ class RadioGroup {
     }
   }
 
-  handleClick(event) {
-    this.setChecked(event.currentTarget);
-  }
 }
