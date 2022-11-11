@@ -92,6 +92,8 @@ const subscriptionSubmit = (event) => {
   document.querySelector('#action-alert').textContent = `Вы подписались на новости`;
   setTimeout(() => {
     document.querySelector('#action-alert').textContent = null;
+    emailField.value = null;
+    processAgree.checked = false;
   }, 3000);
 }
 
