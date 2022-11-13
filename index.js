@@ -120,6 +120,9 @@ document.addEventListener('DOMContentLoaded', () => {
   new Checkbox(chckbxEl);
 
   const subscrEmail = document.querySelector('#subscription-email');
+  subscrEmail.addEventListener('change', () => {
+    subscrEmail.classList.toggle('filled', !!subscrEmail.value);
+  })
   new FieldValidation(subscrEmail, [
     {
       name: 'emailFormat',
